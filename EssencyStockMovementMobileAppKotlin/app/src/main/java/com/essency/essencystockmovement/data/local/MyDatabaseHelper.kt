@@ -143,7 +143,7 @@ class MyDatabaseHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_N
             ContBolNum TEXT NOT NULL
         );
         """.trimIndent()
-        db.execSQL(createTableQueryStockList)
+        db.execSQL(createTableQueryAuditStockList)
 
         val createTableQueryAuditTraceabilityStockList = """
             CREATE TABLE AuditTraceabilityStockList (
@@ -161,7 +161,7 @@ class MyDatabaseHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_N
             Notes TEXT
             );
         """.trimIndent()
-        db.execSQL(createTableQueryTraceabilityStockList)
+        db.execSQL(createTableQueryAuditTraceabilityStockList)
 
         //---------------
 
@@ -255,6 +255,8 @@ class MyDatabaseHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_N
         db.execSQL("DROP TABLE IF EXISTS LogEntry")
         db.execSQL("DROP TABLE IF EXISTS StockList")
         db.execSQL("DROP TABLE IF EXISTS TraceabilityStockList")
+        db.execSQL("DROP TABLE IF EXISTS AuditStockList")
+        db.execSQL("DROP TABLE IF EXISTS AuditTraceabilityStockList")
         db.execSQL("DROP TABLE IF EXISTS MovementType")
         db.execSQL("DROP TABLE IF EXISTS Language")
         db.execSQL("DROP TABLE IF EXISTS WarehouseList")

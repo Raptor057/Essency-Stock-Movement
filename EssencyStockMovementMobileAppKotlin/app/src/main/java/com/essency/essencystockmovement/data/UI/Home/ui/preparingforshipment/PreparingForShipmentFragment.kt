@@ -37,6 +37,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import java.util.Date
 
 class PreparingForShipmentFragment : BaseFragment() {
@@ -392,6 +394,10 @@ class PreparingForShipmentFragment : BaseFragment() {
             else -> emptyList() // Devuelve lista vacía si no hay datos
         }
     }
+    // Obtener fecha/hora actual en formato ISO 8601
+    val timeStamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd"))
+
+
 
     // Función para enviar el correo con la información del último lote
     private fun sendLastBatchEmail() {
@@ -424,7 +430,8 @@ class PreparingForShipmentFragment : BaseFragment() {
                 stock.rev.trim(),
                 stock.serialNumber.toString(),
                 stock.qty.toString().trim(),
-                productionDateFormatted,
+                timeStamp,
+                //productionDateFormatted,
                 //stock.productionDate ?: "",
                 //stock.countryOfProduction ?: "",
                 //stock.serialNumber ?: "",
